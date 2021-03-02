@@ -54,7 +54,7 @@ CREATE TABLE GroupAccount (
 
 DROP TABLE IF EXISTS TypeQuestion;
 CREATE TABLE TypeQuestion (
-    TypeID INT AUTO_INCREMENT PRIMARY KEY,
+    TypeID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     TypeName ENUM('Essay', 'Multiple-Choice')
 );
 
@@ -66,45 +66,49 @@ CREATE TABLE CategoryQuestion (
 
 DROP TABLE IF EXISTS Question;
 CREATE TABLE Question (
-    QuestionID INT AUTO_INCREMENT PRIMARY KEY,
+    QuestionID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Content VARCHAR(255),
-    CategoryID INT,
-    TypeID INT,
-    CreatorID INT,
+    CategoryID INT UNSIGNED,
+    TypeID INT UNSIGNED,
+    CreatorID INT UNSIGNED,
     CreateDate DATE,
     FOREIGN KEY (CategoryID)
         REFERENCES CategoryQuestion (CategoryID),
     FOREIGN KEY (TypeID)
-        REFERENCES TypeQuestion (TypeID) 
+        REFERENCES TypeQuestion (TypeID),
+	FOREIGN KEY (CreatorID)
+		REFERENCES `Group` (CreatorID)
 );
 
 DROP TABLE IF EXISTS Answer;
 CREATE TABLE Answer (
-    AnswerID INT AUTO_INCREMENT PRIMARY KEY,
+    AnswerID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Content VARCHAR(255),
-    QuestionID INT,
-    isCorrect BOOLEAN,
+    QuestionID INT UNSIGNED,
+    isCorrect ENUM ('Dung', 'Sai'),
     FOREIGN KEY (QuestionID)
         REFERENCES Question (QuestionID)
 );
 
 DROP TABLE IF EXISTS Exam;
 CREATE TABLE Exam (
-    ExamID INT AUTO_INCREMENT PRIMARY KEY,
+    ExamID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `Code` VARCHAR(15),
     Title VARCHAR(50),
-    CategoryID INT,
-    Duration ENUM ('60', '90', '120', '180'),
-    CreatorID INT,
+    CategoryID INT UNSIGNED,
+    Duration ENUM('60', '90', '120', '180'),
+    CreatorID INT UNSIGNED,
     CreateDate DATE,
     FOREIGN KEY (CategoryID)
-        REFERENCES CategoryQuestion (CategoryID)	
+        REFERENCES CategoryQuestion (CategoryID),
+    FOREIGN KEY (CreatorID)
+        REFERENCES `Group` (GroupID)
 );
 
 DROP TABLE IF EXISTS ExamQuestion;
 CREATE TABLE ExamQuestion (
-    ExamID INT PRIMARY KEY,
-    QuestionID INT,
+    ExamID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    QuestionID INT UNSIGNED,
     FOREIGN KEY (ExamID)
         REFERENCES Exam (ExamID),
     FOREIGN KEY (QuestionID)

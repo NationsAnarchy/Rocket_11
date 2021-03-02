@@ -23,4 +23,25 @@ CREATE TABLE Trainee (
 
 -- Q2: Thêm vào trường VTI_Account (không rỗng, duy nhất)
 
-ALTER TABLE Trainee ADD VTI_Account VARCHAR(75) NOT NULL UNIQUE
+ALTER TABLE Trainee ADD VTI_Account VARCHAR(75) NOT NULL UNIQUE;
+
+-- Exercise 2: 
+
+DROP TABLE IF EXISTS Exercise2;
+CREATE TABLE Exercise2 (
+    ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `Name` VARCHAR(50) NOT NULL,
+    `Code` CHAR(5) NOT NULL,
+    ModifiedDate DATE DEFAULT NOW()
+);
+
+-- Exercise 3
+
+DROP TABLE IF EXISTS Exercise3;
+CREATE TABLE Exercise3(
+	ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `Name` VARCHAR(50) NOT NULL,
+    BirthDate DATE NOT NULL,
+    Gender BIT NOT NULL DEFAULT 'Unknown',
+    isDeleted BIT NOT NULL
+);
