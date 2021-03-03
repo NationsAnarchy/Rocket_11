@@ -46,12 +46,11 @@ WHERE
 -- Q5: Lấy ra ID của question có nhiều hơn hoặc bằng 4 câu trả lời
 
 SELECT 
-    QuestionID
+    QuestionID, COUNT(QuestionID) AS NumberOfAnswer
 FROM
     Answer
-GROUP BY AnswerID
-HAVING
-    COUNT(AnswerID) >= 4;
+GROUP BY QuestionID
+HAVING COUNT(QuestionID) >= 2;
 
 -- Q6: Lấy ra 5 group được tạo gần đây nhất
 
