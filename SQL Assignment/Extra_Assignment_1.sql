@@ -16,7 +16,8 @@ CREATE TABLE Trainee (
     ET_Gmath TINYINT UNSIGNED,
     ET_English TINYINT UNSIGNED,
     Training_Class VARCHAR(15),
-    Evaluation_Notes TEXT CHECK (ET_IQ >= 0 AND ET_IQ <= 20),
+    Evaluation_Notes TEXT,
+    CHECK (ET_IQ >= 0 AND ET_IQ <= 20),
     CHECK (ET_Gmath >= 0 AND ET_Gmath <= 20),
     CHECK (ET_English >= 0 AND ET_English <= 50)
 );
@@ -42,6 +43,6 @@ CREATE TABLE Exercise3(
 	ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `Name` VARCHAR(50) NOT NULL,
     BirthDate DATE NOT NULL,
-    Gender BIT NOT NULL DEFAULT 'Unknown',
+    Gender BIT DEFAULT NULL,
     isDeleted BIT NOT NULL
 );
