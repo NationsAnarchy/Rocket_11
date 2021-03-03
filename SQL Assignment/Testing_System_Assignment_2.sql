@@ -17,16 +17,20 @@ WHERE
     DepartmentName = 'Sales';
 
 -- Q3: 
+-- Thống kê mỗi tên có độ dài là bao nhiêu kí tự
+-- Lấy max của tên 
+-- In ra kết quả 
+
 
 SELECT 
-    AccountID,
-    Email,
-    Username,
-    FullName,
-    DepartmentID,
-    PositionID
+    FullName, CHAR_LENGTH(FullName) AS NameLength
 FROM
-    Account
+    `Account`
+WHERE
+    CHAR_LENGTH(FullName) = (SELECT 
+            MAX(CHAR_LENGTH(FullName))
+        FROM
+            `Account`)
 ORDER BY CHAR_LENGTH(FullName) DESC
 LIMIT 1;
 
