@@ -45,7 +45,8 @@ SELECT
     QuestionID
 FROM
     Answer
-WHERE
+GROUP BY AnswerID
+HAVING
     COUNT(AnswerID) >= 4;
 
 -- Q6: Lấy ra 5 group được tạo gần đây nhất
