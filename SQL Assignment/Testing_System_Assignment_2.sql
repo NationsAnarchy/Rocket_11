@@ -94,29 +94,22 @@ FROM
 
 SELECT 
     Position.PositionName,
-    `Account`.AccountID,
-    `Account`.Email,
-    `Account`.Username,
     `Account`.FullName
 FROM
     Account
         INNER JOIN
     Position ON `Account`.PositionID = Position.PositionID
-GROUP BY `Account`.FullName
-HAVING Position.PositionName = 'Dev';
+WHERE Position.PositionName = 'Dev';
 
 -- Q12: Viết lệnh để lấy ra danh sách các phòng ban có nhiều hơn 3 nhân viên
 
-SELECT 
+SELECT
     Department.DepartmentName,
-    COUNT(`Account`.AccountID) AS NumberOfStaff
+    Account.AccountID
 FROM
-    `Account`
+    Department
         INNER JOIN
-    Department ON `Account`.DepartmentID = Department.DepartmentID
-GROUP BY `Account`.AccountID
-HAVING
-    COUNT(`Account`.AccountID) > 3;
+    `Account` ON `Account`.DepartmentID = Department.DepartmentID;
 
 -- Q13: Viết lệnh để lấy ra danh sách câu hỏi được sử dụng trong đề thi nhiều nhất
 
@@ -126,7 +119,9 @@ FROM
     Question
         INNER JOIN
     ExamQuestion ON Question.QuestionID = ExamQuestion.QuestionID
-ORDER BY MAX(COUNT(Question.QuestionID));
+GROUP BY Question.QuestionID
+HAVING COUNT(Question.QuestionID)
+ORDER BY Question.QuestionID;
 
 -- Q14: 
 
@@ -138,19 +133,35 @@ FROM
 -- Q15: 
 
 SELECT 
-    Question.QuestionID, Question.Content
+    Question.QuestionID,
+    Question.Content,
+    COUNT(Question.QuestionID) AS NoOfAnswer
 FROM
     Question
         INNER JOIN
     Answer ON Question.QuestionID = Answer.QuestionID
-ORDER BY MAX(COUNT(Answer.AnswerID));
+GROUP BY Question.QuestionID
+ORDER BY NoOfAnswer DESC;
 
 -- Q16: 
 
 SELECT 
-    `Position`.PositionName, COUNT(`Account`.AccountID) AS NumberOfStaff
+    `Position`.PositionName,
+    COUNT(`Account`.AccountID) AS NumberOfStaff
 FROM
     Position
         INNER JOIN
     Account ON `Position`.PositionID = `Account`.PositionID
-ORDER BY MIN(COUNT(`Account`.AccountID));
+GROUP BY Account.AccountID
+HAVING COUNT(Account.AccountID)
+ORDER BY COUNT(`Account`.AccountID) ASC;
+
+-- Q19:
+
+SELECT 
+    TypeName, COUNT(QuestionID) AS CountQuestion
+FROM
+    Question q
+        JOIN
+    TypeQuestion t ON q.TypeID = t.TypeID
+GROUP BY q.TypeID;
