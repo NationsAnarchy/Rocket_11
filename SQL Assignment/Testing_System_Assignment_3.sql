@@ -4,49 +4,79 @@ USE TestSystem1;
 
 SELECT * FROM Account;
 
+DROP VIEW IF EXISTS dsnhanvienphongsale;
 CREATE VIEW DSNhanVienPhongSale AS
     SELECT 
-        `Account`.Email, `Account`.Username, `Account`.FullName
+        `Account`.Email,
+        `Account`.Username,
+        `Account`.FullName,
+        Department.DepartmentName
     FROM
         `Account`
-            INNER JOIN
+            JOIN
         Department ON `Account`.DepartmentID = Department.DepartmentID
-    WHERE DepartmentName = 'Sales';
+    WHERE
+        DepartmentName = 'Sales';
     
 -- Q2: 
 
+-- B1: Thống kê ra mỗi account tham gia vào bao nhiêu group
+-- B2: Lấy max số lượng group
+-- B3: In ra kết quả, lấy ra thông tin
+
+DROP VIEW IF EXISTS AccountThamGiaNhieuGroupNhat;
 CREATE VIEW AccountThamGiaNhieuGroupNhat AS
     SELECT 
-        `Account`.Username, `Account`.FullName
+        AccountID, COUNT(GroupID) AS NoOfGroups
     FROM
-        `Account`
-            INNER JOIN
-        GroupAccount ON `Account`.AccountID = GroupAccount.AccountID
-    ORDER BY (GroupAccount.GroupID);
-    
+        GroupAccount
+    GROUP BY AccountID
+    HAVING NoOfGroups = (SELECT 
+            COUNT(groupID) AS NoOfGroups
+        FROM
+            GroupAccount
+        GROUP BY AccountID
+        ORDER BY NoOfGroups DESC
+        LIMIT 1);
+
+-- Dùng CTE: 
+
+WITH AccountNhieuGroup AS (SELECT 
+        AccountID, COUNT(GroupID) AS NoOfGroups
+    FROM
+        GroupAccount
+    GROUP BY AccountID)
+SELECT 
+    *
+FROM
+    AccountNhieuGroup
+WHERE
+    NoOfGroups = (SELECT 
+            MAX(NoOfGroups)
+        FROM
+            AccountNhieuGroup);
+
 -- Q3: 
 
-CREATE VIEW CauHoiQuaDai AS
+CREATE OR REPLACE VIEW CauHoiQuaDai AS
     SELECT 
-        QuestionID
+        QuestionID, Content
     FROM
         Question
-    GROUP BY Content
-    HAVING
-        CHAR_LENGTH(Content) > 300;
+    WHERE char_length(Content) > 300;
         
 DROP VIEW CauHoiQuaDai;
 
 -- Q4: 
 
-CREATE VIEW DSPhongBanNhieuNhanVienNhat AS
+CREATE OR REPLACE VIEW DSPhongBanNhieuNhanVienNhat AS
     SELECT 
-        Department.DepartmentName,
-        COUNT(`Account`.AccountID) AS NumberOfStaff
+        department.DepartmentName,
+        account.AccountID
     FROM
         `Account`
             INNER JOIN
         Department ON `Account`.DepartmentID = Department.DepartmentID
-    ORDER BY MAX(COUNT(`Account`.AccountID));
+    ORDER BY (department.departmentname);
 
 -- Q5: 

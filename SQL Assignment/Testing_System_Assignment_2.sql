@@ -17,10 +17,10 @@ WHERE
     DepartmentName = 'Sales';
 
 -- Q3: 
+
 -- Thống kê mỗi tên có độ dài là bao nhiêu kí tự
 -- Lấy max của tên 
 -- In ra kết quả 
-
 
 SELECT 
     FullName, CHAR_LENGTH(FullName) AS NameLength
@@ -67,7 +67,18 @@ LIMIT 5;
 DELETE FROM Exam 
 WHERE
     CreateDate <= '2019-12-20';
-    
+
+-- Dùng subquery
+
+DELETE FROM ExamQuestion 
+WHERE
+    ExamID IN (SELECT 
+        ExamID
+    FROM
+        Exam    
+    WHERE
+        CreateDate <= '2019-12-20');
+
 -- Q9: 
 
 UPDATE `Account` 
@@ -133,15 +144,18 @@ FROM
 -- Q15: 
 
 SELECT 
-    Question.QuestionID,
-    Question.Content,
-    COUNT(Question.QuestionID) AS NoOfAnswer
+    COUNT(AnswerID) AS NoOfAnswers, QuestionID
 FROM
-    Question
-        INNER JOIN
-    Answer ON Question.QuestionID = Answer.QuestionID
-GROUP BY Question.QuestionID
-ORDER BY NoOfAnswer DESC;
+    Answer
+GROUP BY QuestionID
+HAVING COUNT(AnswerID) = (SELECT 
+        MAX(NoOfAnswers)
+    FROM
+        (SELECT 
+            COUNT(AnswerID) AS NoOfAnswers, QuestionID
+        FROM
+            Answer
+        GROUP BY QuestionID) AS AnotherResult);
 
 -- Q16: 
 
@@ -155,6 +169,10 @@ FROM
 GROUP BY Account.AccountID
 HAVING COUNT(Account.AccountID)
 ORDER BY COUNT(`Account`.AccountID) ASC;
+
+-- Q17:
+
+
 
 -- Q19:
 
