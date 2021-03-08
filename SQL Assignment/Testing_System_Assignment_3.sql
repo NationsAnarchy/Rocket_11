@@ -79,4 +79,4 @@ CREATE OR REPLACE VIEW DSPhongBanNhieuNhanVienNhat AS
         Department ON `Account`.DepartmentID = Department.DepartmentID
     ORDER BY (department.departmentname);
 
--- Q5: 
+-- Q5:
