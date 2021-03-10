@@ -106,3 +106,19 @@ WHERE
     RETURN out_dept_name;
 END $$
 DELIMITER ;
+
+-- Q6:
+
+DROP PROCEDURE IF EXISTS FindSearch;
+DELIMITER $$
+	CREATE PROCEDURE FindSearch (IN in_select BIT, IN in_string VARCHAR(50))
+		BEGIN
+			SELECT GroupName 
+            FROM `Group` g 
+            WHERE g.GroupName LIKE concat('%',in_string, '%')
+            UNION
+            SELECT Username 
+            FROM `Account` a 
+            WHERE a.Username LIKE concat('%',in_string, '%');
+        END $$
+DELIMITER ;
