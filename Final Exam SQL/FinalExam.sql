@@ -108,20 +108,51 @@ FROM
     Location l
         JOIN
     Employee e ON l.location_id = e.location_id
-		JOIN
-	Country c ON c.country_id = l.country_id
+        JOIN
+    Country c ON c.country_id = l.country_id
 GROUP BY l.country_id;
 
 -- Q3: Tạo trigger
 
 DROP TRIGGER IF EXISTS InsertLimit;
 DELIMITER $$
-CREATE TRIGGER InsertLimit
-BEFORE INSERT ON Employee
-FOR EACH ROW
-BEGIN
-
-END $$
+CREATE 
+    TRIGGER  InsertLimit
+ BEFORE INSERT ON Employee FOR EACH ROW 
+    BEGIN
+		DECLARE in_country_id TINYINT;
+        DECLARE employee_amount TINYINT;
+        
+SELECT 
+    country_id
+INTO in_country_id FROM
+    Location
+WHERE
+    location_id = NEW.location_id;
+        
+        WITH LocationCTE AS (
+			SELECT 
+    *
+FROM
+    Location
+WHERE
+    country_id = in_country_id
+        )
+        
+SELECT 
+    COUNT(1) INTO employee_amount
+FROM
+    Employee
+WHERE
+    location_id IN (SELECT 
+            location_id
+        FROM
+            LocationCTE);
+	IF employee_amount >= 10 THEN
+		SIGNAL SQLSTATE '12345'
+        SET MESSAGE_TEXT = 'Can not insert more than 10 employees for each country';
+    END IF;
+    END$$
 DELIMITER ;
 
 -- Q4: Cấu hình bảng
