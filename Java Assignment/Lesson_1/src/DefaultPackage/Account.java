@@ -3,7 +3,7 @@ package DefaultPackage;
 import java.util.Date;
 
 public class Account {
-    byte id;
+    int id;
     String email;
     String userName;
     String fullName;
