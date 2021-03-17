@@ -16,6 +16,10 @@ public class Program {
         dep3.id = 3;
         dep3.name = "Development";
 
+        Account acc1 = new Account();
+        Account acc2 = new Account();
+        Account acc3 = new Account();
+
         System.out.println(dep3.name);
         System.out.println(dep2.name);
         System.out.println(dep1.name);
