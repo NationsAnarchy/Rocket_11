@@ -37,6 +37,8 @@ public class Program {
         acc3.department = dep2;
 
         acc1.groups = new int[]{1, 2, 3};
+        acc2.groups = new int[]{1};
+        acc3.groups = new int[]{1, 2, 3, 4};
 
         Group group1 = new Group();
 
@@ -72,7 +74,20 @@ public class Program {
 
         // Question 2:
         // Làm switch case:
-        switch (acc1.groups.length) {
+        groupCheck(acc1);
+
+        Account[] accounts = new Account[]{acc1, acc2, acc3};
+        for (Account account : accounts) {
+            System.out.println("Thong tin account thu " + account.id + " la:");
+            System.out.println("Ten nhan vien: " + account.fullName);
+            System.out.println("Dia chi email: " + account.email);
+            System.out.println("Phong ban: " + account.department.name);
+            System.out.println();
+        }
+    }
+
+    private static void groupCheck(Account account) {
+        switch (account.groups.length) {
             case 0:
                 System.out.println("Nhan vien nay khong co group.");
                 break;
@@ -88,14 +103,5 @@ public class Program {
                 break;
         }
         System.out.println();
-
-        Account[] accounts = {acc1, acc2, acc3};
-        for (Account account : accounts) {
-            System.out.println("Thong tin account thu " + account.id + " la:");
-            System.out.println("Ten nhan vien: " + account.fullName);
-            System.out.println("Dia chi email: " + account.email);
-            System.out.println("Phong ban: " + account.department.name);
-            System.out.println();
-        }
     }
 }
