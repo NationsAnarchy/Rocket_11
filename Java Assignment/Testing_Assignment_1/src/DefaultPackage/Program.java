@@ -19,10 +19,24 @@ public class Program {
         dep3.name = "Development";
 
         Account acc1 = new Account();
-        Account acc2 = new Account();
-        Account acc3 = new Account();
+        acc1.id = 1;
+        acc1.fullName = "Charles Leclerc";
+        acc1.email = "nn01@gmail.com";
+        acc1.department = dep1;
 
-        // This is a comment
+        Account acc2 = new Account();
+        acc2.id = 2;
+        acc2.fullName = "Lando Norris";
+        acc2.email = "nn02@gmail.com";
+        acc2.department = dep3;
+
+        Account acc3 = new Account();
+        acc3.id = 3;
+        acc3.fullName = "Carlos Sainz Jr.";
+        acc3.email = "nn03@gmail.com";
+        acc3.department = dep2;
+
+        acc1.groups = new int[]{1, 2, 3};
 
         Group group1 = new Group();
 
@@ -41,22 +55,21 @@ public class Program {
         groupAccount3.group = group1;
         groupAccount3.joinDate = new Date("2021/03/04");
 
-        // GroupAccount[] groupAccounts = {groupAccount1, groupAccount2, groupAccount3};
-
         System.out.println(dep3.name);
         System.out.println(dep2.name);
         System.out.println(dep1.name);
+        System.out.println();
 
         // Testing System 2:
+
         // Question 1+3
         System.out.println(acc2.department == null ?
-                "Nhan vien nay chua co phong ban" :
-                "Phong ban cua nhan vien nay la " + acc2.department.name);
+                "Nhan vien nay chua co phong ban." :
+                "Phong ban cua nhan vien nay la " + acc2.department.name + ".");
+        System.out.println();
 
         // Question 2:
-
         // Làm switch case:
-
         switch (acc1.groups.length) {
             case 0:
                 System.out.println("Nhan vien nay khong co group.");
@@ -67,21 +80,25 @@ public class Program {
                 break;
             case 3:
                 System.out.println("Nhan vien nay la nguoi tham gia nhieu group.");
+                break;
             default:
                 System.out.println("Nhan vien nay tham gia tat ca cac group.");
+                break;
         }
+        System.out.println();
 
         Account[] accounts = {acc1, acc2, acc3};
         for (Account account : accounts) {
             System.out.println("Thong tin account thu " + account.id + " la:");
             System.out.println("Ten nhan vien: " + account.fullName);
             System.out.println("Dia chi email: " + account.email);
-            System.out.println("Phong ban: " + account.department);
+            System.out.println("Phong ban: " + account.department.name);
+            System.out.println();
         }
-        
+
         GroupAccount[] groupAccounts = {groupAccount1, groupAccount2, groupAccount3};
         for (GroupAccount groupAccount : groupAccounts
-             ) {
+        ) {
             System.out.println(groupAccount.joinDate);
         }
     }

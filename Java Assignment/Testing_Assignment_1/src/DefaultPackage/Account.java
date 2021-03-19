@@ -11,5 +11,5 @@ public class Account {
     Position position;
     Date createDate;
     Gender gender;
-    Group[] groups;
+    int[] groups;
 }
