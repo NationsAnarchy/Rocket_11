@@ -55,6 +55,8 @@ public class Program {
         groupAccount3.group = group1;
         groupAccount3.joinDate = new Date("2021/03/04");
 
+        System.out.println();
+
         System.out.println(dep3.name);
         System.out.println(dep2.name);
         System.out.println(dep1.name);
@@ -94,12 +96,6 @@ public class Program {
             System.out.println("Dia chi email: " + account.email);
             System.out.println("Phong ban: " + account.department.name);
             System.out.println();
-        }
-
-        GroupAccount[] groupAccounts = {groupAccount1, groupAccount2, groupAccount3};
-        for (GroupAccount groupAccount : groupAccounts
-        ) {
-            System.out.println(groupAccount.joinDate);
         }
     }
 }
