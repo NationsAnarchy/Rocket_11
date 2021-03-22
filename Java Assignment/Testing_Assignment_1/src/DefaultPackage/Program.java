@@ -3,6 +3,7 @@ package DefaultPackage;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 public class Program {
     public static void main(String[] args) {
@@ -129,6 +130,60 @@ public class Program {
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
         String formattedDate = dateFormat.format(new Date());
         System.out.println(formattedDate);
+        System.out.println();
+
+        // Testing Assignment 3:
+        // Q1:
+        acc1.salary = 5240.5f;
+        acc2.salary = 10970.55f;
+        int roundedSalary1 = Math.round(acc1.salary);
+        int roundedSalary2 = Math.round(acc2.salary);
+
+        System.out.println(roundedSalary1);
+        System.out.println(roundedSalary2);
+
+        //Q2:
+        Random random = new Random();
+        int testNumber = random.nextInt(99999);
+        System.out.println("Without formatting: " + testNumber);
+        String formatNumber = String.format("%05d", testNumber);
+        System.out.println("With formatting: " + formatNumber);
+        System.out.println();
+
+        Account[] accounts1 = new Account[5];
+        for (int i = 0; i < accounts1.length; i++){
+            accounts1[i] = new Account();
+            accounts1[i].email = "Email " + (i+1);
+            accounts1[i].userName = "Username " + (i+1);
+            accounts1[i].fullName = "Full name " + (i+1);
+            accounts1[i].createDate = "Create date " + new Date();
+        }
+
+        for (Account value : accounts1) {
+            System.out.println(value.email);
+            System.out.println(value.userName);
+            System.out.println(value.fullName);
+            System.out.println(value.createDate);
+            System.out.println();
+        }
+
+        String testString = "A aaa bb bbb";
+        testString = testString.trim();
+        String[] string;
+        string = testString.split("\\s+");
+        System.out.println(string.length);
+
+        System.out.println();
+
+        acc1.userName = "charlesLeclerc16";
+        acc2.userName = "landoNorris4";
+
+        Account[] accounts2 = new Account[]{acc1, acc2};
+
+        for (Account account: accounts2
+             ) {
+            System.out.println(account);
+        }
     }
 
     private static void groupCheck(Account account) {

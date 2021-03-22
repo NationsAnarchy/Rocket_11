@@ -1,7 +1,5 @@
 package DefaultPackage;
 
-import java.util.Date;
-
 public class Account {
     int id;
     String email;
@@ -9,7 +7,17 @@ public class Account {
     String fullName;
     Department department;
     Position position;
-    Date createDate;
+    String createDate;
     Gender gender;
+    float salary;
     int[] groups;
+
+    public String toString(){
+        String result = "";
+        result += "Ho ten: " + fullName + "\n";
+        result += "Nguoi dung: " + userName + "\n";
+        result += "Dia chi email: " + email + "\n";
+        result += "Id: " + id + "\n";
+        return result;
+    }
 }
