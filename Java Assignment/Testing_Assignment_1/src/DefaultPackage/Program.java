@@ -1,6 +1,8 @@
 package DefaultPackage;
 
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Program {
     public static void main(String[] args) {
@@ -84,6 +86,49 @@ public class Program {
             System.out.println("Phong ban: " + account.department.name);
             System.out.println();
         }
+
+        // In ra thông tin department
+        Department[] departments = new Department[]{dep1, dep2};
+        for (Department department : departments
+        ) {
+            System.out.println("Id: " + department.id);
+            System.out.println("Phong ban: " + department.name);
+            System.out.println();
+        }
+
+        // In ra các số chẵn từ 0 đến 20
+
+        for (int i = 0; i <= 20; i += 2) {
+            System.out.print(i + " ");
+        }
+
+        System.out.println();
+        System.out.println();
+
+        // Dùng break và continue:
+
+        for (int x = 0; x < accounts.length; x++) {
+
+            if (x == 0) {
+                continue;
+            }
+
+            if (x == 2) {
+                break;
+            }
+
+            System.out.println("Ten: " + accounts[x].fullName);
+            System.out.println("Email: " + accounts[x].email);
+            System.out.println("Phong ban: " + accounts[x].department.name);
+            System.out.println();
+        }
+
+        // Date format
+
+        Locale locale = new Locale("vi", "VN");
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
+        String formattedDate = dateFormat.format(new Date());
+        System.out.println(formattedDate);
     }
 
     private static void groupCheck(Account account) {
