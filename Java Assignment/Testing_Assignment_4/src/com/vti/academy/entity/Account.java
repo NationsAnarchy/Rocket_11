@@ -3,14 +3,14 @@ package com.vti.academy.entity;
 import java.time.LocalDate;
 
 public class Account {
-    int id;
-    String email;
-    String username;
-    String fullName;
-    Department department;
-    Position position;
-    LocalDate createDate;
-    Group[] groups;
+    private int id;
+    private String email;
+    private String username;
+    private String fullName;
+    private Department department;
+    private Position position;
+    private LocalDate createDate;
+    private Group[] groups;
 
     public Account() {
     }
@@ -30,7 +30,7 @@ public class Account {
         this.createDate = LocalDate.now();
     }
 
-    Account(int id, String email, String username, String firstName, String lastName, Position position,
+    public Account(int id, String email, String username, String firstName, String lastName, Position position,
             LocalDate createDate) {
         this.id = id;
         this.email = email;
@@ -38,5 +38,13 @@ public class Account {
         this.fullName = firstName + " " + lastName;
         this.position = position;
         this.createDate = createDate;
+    }
+
+    public String getFullName(){
+        return fullName;
+    }
+
+    public void setFullName(String fullName){
+        this.fullName = fullName;
     }
 }
