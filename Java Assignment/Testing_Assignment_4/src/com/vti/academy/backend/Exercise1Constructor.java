@@ -1,8 +1,11 @@
 package com.vti.academy.backend;
 
+import com.vti.academy.entity.Account;
 import com.vti.academy.entity.Department;
+import com.vti.academy.entity.Student;
 
 public class Exercise1Constructor {
-    Department department2 = new Department();
-
+    Department department = new Department();
+    Account account = new Account();
+    Student student = new Student();
 }
