@@ -167,11 +167,13 @@ public class Program {
             System.out.println();
         }
 
-        String testString = "A aaa bb bbb";
+        // Tách các từ ra và đếm:
+
+        String testString = "   A aaa bb   bbb";
         testString = testString.trim();
         String[] string;
         string = testString.split("\\s+");
-        System.out.println(string.length);
+        System.out.println("Ta có số từ được tách ra là: " + string.length);
 
         System.out.println();
 
