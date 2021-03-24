@@ -1,3 +1,5 @@
+package com.vti.academy.entity;
+
 import java.time.LocalDate;
 
 public class Account {
@@ -10,17 +12,17 @@ public class Account {
     LocalDate createDate;
     Group[] groups;
 
-    Account() {
+    public Account() {
     }
 
-    Account(int id, String email, String username, String firstName, String lastName) {
+    public Account(int id, String email, String username, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.fullName = firstName + " " + lastName;
     }
 
-    Account(String email, String username, String firstName, String lastName, Position position) {
+    public Account(String email, String username, String firstName, String lastName, Position position) {
         this.email = email;
         this.username = username;
         this.fullName = firstName + " " + lastName;

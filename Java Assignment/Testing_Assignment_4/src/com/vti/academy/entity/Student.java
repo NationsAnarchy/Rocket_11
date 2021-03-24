@@ -1,3 +1,5 @@
+package com.vti.academy.entity;
+
 public class Student {
     int id;
     String name;
