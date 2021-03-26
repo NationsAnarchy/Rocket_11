@@ -7,15 +7,21 @@ public class Group {
     private String groupName;
     private Date createDate;
 
-    public String getGroupName(String groupName){
+    public Group(int id, String groupName, Date createDate){
+        this.id = id;
+        this.groupName = groupName;
+        this.createDate = createDate;
+    }
+
+    public String getGroupName(String groupName) {
         return groupName;
     }
 
-    public void setGroupName(String groupName){
+    public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
 
-    public String getCreateDate(String createDate){
+    public String getCreateDate(String createDate) {
         return createDate;
     }
 }
