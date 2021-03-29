@@ -23,7 +23,7 @@ public class Engineer extends Person{
 	@Override
 	public void initInput() {
 		super.initInput();
-		System.out.println("Mời bạn nhập vào số ngành: ");
+		System.out.println("Mời bạn nhập vào ngành: ");
 		major = scanner.nextLine();
 	}
 }
