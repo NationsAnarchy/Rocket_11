@@ -1,10 +1,15 @@
 package com.vti.academy.entity;
 
-public class KySu extends CanBo {
+public class Engineer extends Worker {
     private String NganhDaoTao;
 
-    public KySu(int id, String hoTen, int tuoi, boolean gioiTinh, String diaChi, String nganhDaoTao) {
+    public Engineer(int id, String hoTen, int tuoi, boolean gioiTinh, String diaChi, String nganhDaoTao) {
         super(id, hoTen, tuoi, gioiTinh, diaChi);
-        this.NganhDaoTao = nganhDaoTao;
+        NganhDaoTao = nganhDaoTao;
+    }
+
+    public Engineer() {
+        super();
+        insertInfo();
     }
 }
