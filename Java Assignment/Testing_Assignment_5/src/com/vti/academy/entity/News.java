@@ -2,8 +2,6 @@ package com.vti.academy.entity;
 
 import com.vti.academy.backend.INews;
 
-import java.util.Arrays;
-
 public class News implements INews {
     private int id;
     private String title;
@@ -67,8 +65,8 @@ public class News implements INews {
     @Override
     public float calculate(int[] rate) {
         int total = 0;
-        for (int i = 0; i < rate.length; i++){
-            total += rate[i];
+        for (int j : rate) {
+            total += j;
         }
         averageRate = total / rate.length;
         return averageRate;
