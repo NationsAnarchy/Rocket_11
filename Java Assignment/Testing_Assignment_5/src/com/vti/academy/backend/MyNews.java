@@ -18,18 +18,18 @@ public class MyNews {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Nhập vào tiêu đề/title: ");
+        System.out.println("Nháº­p vÃ o tiÃªu Ä‘á»�/title: ");
         news.setTitle(scanner.nextLine());
 
-        System.out.println("Nhập vào ngày đăng: ");
+        System.out.println("Nháº­p vÃ o ngÃ y Ä‘Äƒng: ");
         news.setPublishDate(scanner.nextLine());
 
-        System.out.println("Nhập vào tác giả: ");
+        System.out.println("Nháº­p vÃ o tÃ¡c giáº£: ");
         news.setAuthor(scanner.nextLine());
 
-        System.out.println("Nhập vào nội dung: ");
+        System.out.println("Nháº­p vÃ o ná»™i dung: ");
         news.setContent(scanner.nextLine());
-
+        scanner.close();
         newsList.add(news);
     }
 
