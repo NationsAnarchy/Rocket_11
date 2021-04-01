@@ -6,9 +6,9 @@ public class Program1and2 {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Input a: ");
-        int a = scanner.nextInt();
+        float a = scanner.nextFloat();
         System.out.println("Input b: ");
-        int b = scanner.nextInt();
+        float b = scanner.nextFloat();
 
         try {
             float result = divide(a, b);
@@ -25,8 +25,7 @@ public class Program1and2 {
         }
     }
 
-    public static float divide(int a, int b) {
-        //noinspection IntegerDivisionInFloatingPointContext
+    public static float divide(float a, float b) {
         return a / b;
     }
 }
