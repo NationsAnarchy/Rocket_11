@@ -3,7 +3,6 @@ public class Program4 {
         // Question 4:
         String[] departments = new String[]{"Dev", "BA", "Sales"};
     }
-
     public int getIndex (int index){
         return index;
     }

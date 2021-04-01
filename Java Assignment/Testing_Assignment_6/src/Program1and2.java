@@ -2,14 +2,11 @@ import java.util.Scanner;
 
 public class Program1and2 {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Input a: ");
         float a = scanner.nextFloat();
         System.out.println("Input b: ");
         float b = scanner.nextFloat();
-
         try {
             float result = divide(a, b);
 
