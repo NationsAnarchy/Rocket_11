@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class ScannerUtils {
     private static Scanner scanner = new Scanner(System.in);
+
     // Question 7
     public static int inputInt(String message) {
         while (true) {
@@ -43,6 +44,19 @@ public class ScannerUtils {
                 return input;
             } else {
                 System.err.println(message);
+            }
+        }
+    }
+
+    public static String inputEmail(String message) {
+        while (true) {
+            String input = inputString("Chuỗi nhập vào rỗng, không phù hợp");
+            if (input.length() <= 5) {
+                System.err.println("Chuỗi nhập vào quá ngắn, nhập vào dài hơn 5 kí tự");
+            } else if (!input.contains("@")) {
+                System.err.println("Chuỗi nhập vào không có @, nhập vào email có @.");
+            } else {
+                return input;
             }
         }
     }
