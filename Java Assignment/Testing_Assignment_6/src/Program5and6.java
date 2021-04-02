@@ -9,6 +9,7 @@ public class Program5and6 {
 
     public static int inputInt(String message) {
         Scanner scanner = new Scanner(System.in);
+        scanner.close();     
 
         while (true) {
             try {
