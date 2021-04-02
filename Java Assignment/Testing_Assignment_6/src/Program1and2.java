@@ -7,6 +7,7 @@ public class Program1and2 {
         float a = scanner.nextFloat();
         System.out.println("Input b: ");
         float b = scanner.nextFloat();
+        scanner.close();
         try {
             float result = divide(a, b);
 
