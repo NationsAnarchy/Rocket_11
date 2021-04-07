@@ -1,6 +1,8 @@
 package com.vti.academy.backend;
 
 import com.vti.academy.entity.MyMath;
+import com.vti.academy.entity.PrimaryStudent;
+import com.vti.academy.entity.SecondaryStudent;
 import com.vti.academy.entity.Student;
 
 public class Exercise1 {
@@ -8,18 +10,18 @@ public class Exercise1 {
     private Student[] students;
 
     // Question 1:
-    public void question1() throws Exception{
+    public void question1() throws Exception {
         Student student1 = new Student(1, "Charles Leclerc");
         Student student2 = new Student(2, "Lando Norris");
         Student student3 = new Student(3, "George Russell");
 
-        for (Student student:students) {
+        for (Student student : students) {
             System.out.println(student);
         }
 
         Student.college = "HV Bưu Chính Viễn Thông";
 
-        for (Student student:students) {
+        for (Student student : students) {
             System.out.println(student);
         }
     }
@@ -43,7 +45,7 @@ public class Exercise1 {
         System.out.println(Student.getGroupMoney());
 
         System.out.println("Everyone donate 50 more money, each.");
-        for (Student student:students) {
+        for (Student student : students) {
             student.addMoney();
         }
 
@@ -59,5 +61,33 @@ public class Exercise1 {
         System.out.println(MyMath.calculateSum(5, 10));
     }
 
+    // Question 4:
 
+    public void question4() {
+        Student.changeCollege("ĐH Ngoại Ngữ");
+        System.out.println("After using changeCollege method: ");
+        for (Student student : students) {
+            System.out.println(Student.getCollege());
+        }
+    }
+
+    // Question 5:
+
+    public void question5() {
+        System.out.println("Số sinh viên được tạo: ");
+        System.out.println(Student.count);
+    }
+
+    // Question 6:
+
+    public void question6() throws Exception {
+        Student student4 = new PrimaryStudent("Yuki Tsunoda");
+        Student student5 = new PrimaryStudent("Mick Schumacher");
+        Student student6 = new SecondaryStudent("Pierre Gasly");
+        Student student7 = new SecondaryStudent("Esteban Ocon");
+
+        System.out.println("Student count: " + Student.count);
+        System.out.println("Primary student count: " + PrimaryStudent.counterPrimary);
+        System.out.println("Secondary student count: " + SecondaryStudent.counterSecondary);
+    }
 }
