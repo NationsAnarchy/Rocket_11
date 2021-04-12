@@ -1,41 +1,15 @@
 package com.vti.academy.backend;
 
+import com.vti.academy.entity.InnerClassEx.*;
+
 public class InnerClassEx {
-    public class Car {
-        private String carName;
-        private String carType;
-        private String carEngine;
+    public void question2() {
+        Car car = new Car("McLaren", "RWD");
+        Car.Engine engine = new Car.Engine();
 
-        public Car(String carName, String carType) {
-            this.carName = carName;
-            this.carType = carType;
-        }
+        engine.setEngineType("Electric");
 
-        public void setCarEngine(String engine) {
-            this.carEngine = engine;
-        }
-
-        public void showInformation() {
-            System.out.println("Car name: " + carName);
-            System.out.println("Car type: " + carType);
-            System.out.println("Car engine: " + carEngine);
-        }
-
-        public class Engine {
-            private String engineType;
-
-            public String getEngineType() {
-                return engineType;
-            }
-
-            public void setEngineType(String engineType) {
-                this.engineType = engineType;
-            }
-
-            @Override
-            public String toString() {
-                return engineType;
-            }
-        }
+        car.setCarEngine(engine);
+        car.showInformation();
     }
 }
