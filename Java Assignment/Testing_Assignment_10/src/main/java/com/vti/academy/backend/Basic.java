@@ -37,13 +37,10 @@ public class Basic {
         String sql = "INSERT INTO `Position` (PositionName) " + " VALUES (?) ";
         PreparedStatement statement = conn.prepareStatement(sql);
 
-        // set parameter
         statement.setString(1, name);
 
-        // Execute SQL Query with executeUpdate
         int affectedRecords = statement.executeUpdate();
 
-        // Handing result set
         if (affectedRecords == 1) System.out.println("New position added successfully!");
         else {
             System.out.println("Failed to add the position.");
@@ -54,11 +51,9 @@ public class Basic {
     public void updatePos() throws SQLException {
         Statement statement = conn.createStatement();
 
-        // Execute SQL Query with executeUpdate
         String sql = "UPDATE `Position` SET PositionName = 'Dev' WHERE PositionID = 5";
         int affectedRecords = statement.executeUpdate(sql);
 
-        // Handing result set
         if (affectedRecords == 1) System.out.println("Updated successfully!");
         else {
             System.out.println("Unable to update.");
@@ -68,17 +63,13 @@ public class Basic {
     //Q5:
     public void delDepartmentById(int id) throws SQLException {
 
-        // Create a statement object
         String sql = " DELETE FROM `Position` WHERE PositionID = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
 
-        // set parameter
         statement.setInt(1, id);
 
-        // Execute SQL Query with executeUpdate
         int effectedRecordAmount = statement.executeUpdate();
 
-        // Handing result set
         if (effectedRecordAmount > 0) {
             System.out.println("Deleted department successfully!");
         } else {
