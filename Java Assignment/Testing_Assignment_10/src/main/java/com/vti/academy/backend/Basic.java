@@ -27,7 +27,7 @@ public class Basic {
         ResultSet rs = statement.executeQuery(sql);
 
         while (rs.next()) {
-            System.out.println(rs.getInt("PositionID"));
+            System.out.print(rs.getInt("PositionID"));
             System.out.println(rs.getString("PositionName"));
         }
     }
