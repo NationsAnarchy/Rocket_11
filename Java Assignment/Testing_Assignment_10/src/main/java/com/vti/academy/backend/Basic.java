@@ -14,7 +14,7 @@ public class Basic {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        Connection conn = DriverManager.getConnection(url, username, password);
+        conn = DriverManager.getConnection(url, username, password);
 
         System.out.println("Connection to database successful!");
     }
