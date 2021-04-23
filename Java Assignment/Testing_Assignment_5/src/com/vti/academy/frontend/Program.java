@@ -22,11 +22,11 @@ public class Program {
             switch (choose) {
                 case 1:
                     System.out.println("Chức năng 1 - Thêm tin tức");
-                    MyNews.addNews();
+                    news.addNews();
                     break;
                 case 2:
                     System.out.println("Chức năng 2 - Xem tin tức");
-                    MyNews.viewListNews();
+                    news.viewListNews();
                     break;
                 case 3:
                     System.out.println("Chức năng 3 - Xem đánh giá");

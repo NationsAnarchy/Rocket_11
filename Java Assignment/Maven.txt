@@ -1,0 +1,1 @@
+New Project => Maven => Archetype Quickstart.
