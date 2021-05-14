@@ -1,7 +1,6 @@
 package com.vti.academy.repository;
 
 import java.util.List;
-
 import com.vti.academy.entity.Department;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
