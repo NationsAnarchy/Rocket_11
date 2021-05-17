@@ -42,7 +42,7 @@ public class DepartmentRepository {
 			session = sessionFactory.openSession();
 
 			// create hql query
-			Query<Department> query = session.createQuery("FROM Department");
+			Query<Department> query = session.createQuery("FROM Department ORDER BY Id");
 
 			return query.list();
 

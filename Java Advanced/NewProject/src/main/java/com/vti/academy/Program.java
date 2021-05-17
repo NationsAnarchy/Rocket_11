@@ -24,7 +24,7 @@ public class Program {
 
 		System.out.println("\n\n***********GET DEPARTMENT BY NAME***********");
 
-		Department departmentByName = repository.getDepartmentByName("Marketting");
+		Department departmentByName = repository.getDepartmentByName("Sale");
 		System.out.println(departmentByName);
 
 		// System.out.println("\n\n***********CREATE DEPARTMENT***********");
