@@ -10,6 +10,6 @@ public class AccountController {
     @GetMapping
 
     public String hello() {
-        return "Hello Spring Boot by Incarnat1on!";
+        return "Hello Spring Boot! By Incarnat1on.";
     }
 }
